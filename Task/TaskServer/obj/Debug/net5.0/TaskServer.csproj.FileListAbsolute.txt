@@ -23,3 +23,4 @@ C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\obj\Debu
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\obj\Debug\net5.0\TaskServer.csproj.CopyComplete
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\AllInfo.json
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Collection.json

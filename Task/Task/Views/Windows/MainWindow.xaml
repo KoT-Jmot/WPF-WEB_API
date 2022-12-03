@@ -1,4 +1,4 @@
-﻿<Window x:Class="Task.MainWindow"
+﻿<Window x:Class="Task.MainWindow" Closed="Windows_Closed"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:Task" 
         xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         mc:Ignorable="d"
-        Title="Анализ Курсов" MinHeight="460" MinWidth="800" FontSize="16">
+        Title="Анализ Курсов" MinHeight="460" MinWidth="800" FontSize="16" Name="Windows">
     <Grid>
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="50">
                 <DatePicker Focusable="False" Name="Cur_DateStart" MinWidth="150" VerticalAlignment="Top" Height="30" Margin="5" AutomationProperties.HelpText="Начальная дата"></DatePicker>
                 <Label Height="30" VerticalAlignment="Top" Margin="5" Content="-"/>
@@ -19,6 +23,7 @@
                     <ComboBoxItem Content="USD"/>
                     <ComboBoxItem Content="EUR"/>
                     <ComboBoxItem Content="RUB"/>
+                    <ComboBoxItem Content="BTC"/>
                 </ComboBox>
                 <Button  Click="Button_Click">Получить</Button>
             </StackPanel>

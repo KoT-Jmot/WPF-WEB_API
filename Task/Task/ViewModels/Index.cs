@@ -13,10 +13,11 @@ namespace Task.Models
 {
     internal class Index
     {
+        private static string localhost = "http://localhost:5000/index/";//;
         public static void index(string Cur, string Cur_DateStart, string Cur_DateEnd, Chart chart_chart, Label ExpectionText)
         {
             DateTime? start = null, end = null;
-            ExpectionText.Content = "";
+            ExpectionText.Content = ""; //You mast enter your localhost
             try
             {
 
@@ -32,15 +33,17 @@ namespace Task.Models
                     ExpectionText.Content = DateTime.Now + " Ввод даты осуществлён неверно";
                     return;
                 }
-                string url = $"http://localhost:15913/index/{Cur}/{start.Value.ToString("yyyy/MM/dd")}/{end.Value.ToString("yyyy/MM/dd")}";
+
+                string url = localhost + $"{Cur}/{start.Value.ToString("yyyy/MM/dd")}/{end.Value.ToString("yyyy/MM/dd")}";
                 string json = Encoding.UTF8.GetString(new WebClient().DownloadData(url));
+
                 if (json == null)
                     throw new Exception("Server problems");
                 var model = JsonConvert.DeserializeObject<List<Currency>>(json).OrderBy(c=>c.Date).ToList();
 
                 DateTime[] axisXData = model.Select(c => c.Date).ToArray();
                 double[] axisYData = model.Select(c => c.Cur_OfficialRate).ToArray();
-                CreateChart.GetChart(axisXData, axisYData, chart_chart);
+                CreateChart.GetChart(axisXData, axisYData.ToList(), chart_chart);
             }
             catch (Exception Q)
             {

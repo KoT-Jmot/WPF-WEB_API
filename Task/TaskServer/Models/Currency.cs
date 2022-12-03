@@ -5,6 +5,7 @@ namespace Task.Models
     public class Currency : IEquatable<Currency>
     {
         public int Cur_ID {get;set;}
+        public string Cur_Abbreviation { get;set;}
         public DateTime Date {get;set;}
         public double Cur_OfficialRate { get; set; }
         public bool Equals(Currency Cur)
