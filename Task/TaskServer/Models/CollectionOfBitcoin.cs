@@ -12,5 +12,6 @@ namespace TaskServer.Models
             data.ForEach(a => currencies.Add(new Currency { Cur_Abbreviation = "BTC", Date = a.Date, Cur_OfficialRate = a.priceUsd }));
             return currencies;
         }
+
     }
 }

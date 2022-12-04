@@ -21,6 +21,7 @@ namespace TaskServer.Models
             }
             else
             {
+                //Если файл отсутствует, то идёт запрос на сайт и сохраняет данные
                 string url = "https://www.nbrb.by/api/exrates/currencies";
                 string json = Encoding.UTF8.GetString(new WebClient().DownloadData(url));
                 System.IO.File.WriteAllText("AllInfo.json", json);
@@ -39,6 +40,12 @@ namespace TaskServer.Models
         public List<AllInfo> GetCurInfo(string Cur_Abbreviation)
         {
             return Cur.Where(c=>c.Cur_Abbreviation== Cur_Abbreviation).ToList();
+        }
+        public void SaveServerCurrencyInfo(List<Currency> model)
+        {
+            OnServerCurInfo = OnServerCurInfo.Union(model).ToHashSet();
+            string Savejson = JsonConvert.SerializeObject(OnServerCurInfo.OrderBy(c => c.Date), Formatting.Indented);
+            System.IO.File.WriteAllText("Collection.json", Savejson);
         }
     }
 }

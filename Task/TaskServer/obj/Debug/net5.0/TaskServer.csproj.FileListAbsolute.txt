@@ -22,5 +22,16 @@ C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\obj\Debu
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\obj\Debug\net5.0\ref\TaskServer.dll
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\obj\Debug\net5.0\TaskServer.csproj.CopyComplete
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\StyleCop.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.AspNetCore.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Serilog.Sinks.File.dll
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\AllInfo.json
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\TaskServer\bin\Debug\net5.0\Collection.json

@@ -9,5 +9,6 @@ namespace TaskServer.Models.Interface
 
         public HashSet<Currency> OnServerCurInfo { get; set; }
         public List<AllInfo> GetCurInfo(string Cur_Abbreviation);
+        public void SaveServerCurrencyInfo(List<Currency> model);
     }
 }

@@ -19,3 +19,5 @@ C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\bin\Debug\Newt
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\obj\Debug\Task.csproj.CopyComplete
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\bin\Debug\FastReport.Compat.dll
 C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\bin\Debug\FastReport.DataVisualization.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\bin\Debug\StyleCop.dll
+C:\Users\Иван\OneDrive\Рабочий стол\Task\Task\Task\bin\Debug\StyleCop.xml

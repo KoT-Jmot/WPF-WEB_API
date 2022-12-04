@@ -17,10 +17,10 @@ namespace Task.ViewModels
             chart_chart.Series["Series1"].ChartArea = "Default";
             chart_chart.Series["Series1"].ChartType = SeriesChartType.Line;
             chart_chart.Series["Series1"].BorderWidth = 3;
-            axisYData = axisYData.Select(a => Math.Round(a, 2)).ToList();
-            chart_chart.ChartAreas[0].AxisY.Maximum = axisYData.Max();
-            chart_chart.ChartAreas[0].AxisY.Minimum = axisYData.Min();
-            chart_chart.Series["Series1"].Points.DataBindXY(axisXData, axisYData);
+            axisYData = axisYData.Select(a => Math.Round(a, 4)).ToList();
+            chart_chart.ChartAreas[0].AxisY.Maximum = axisYData.Max() + 0.1;
+            chart_chart.ChartAreas[0].AxisY.Minimum = axisYData.Min() - 0.1;
+            chart_chart.Series["Series1"].Points.DataBindXY(axisXData, axisYData.ToArray());
             chart_chart.Series["Series1"].Points.FindMinByValue().LabelForeColor = System.Drawing.Color.Red;
             chart_chart.Series["Series1"].Points.FindMinByValue().LabelBackColor = System.Drawing.Color.White;
             chart_chart.Series["Series1"].Points.FindMinByValue().Label = $"min\n{axisYData.Min()}";

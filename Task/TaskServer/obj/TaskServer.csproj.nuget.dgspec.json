@@ -47,6 +47,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.2, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "StyleCop": {
+              "target": "Package",
+              "version": "[6.2.0, )"
             }
           },
           "imports": [

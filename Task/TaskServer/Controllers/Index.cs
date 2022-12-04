@@ -31,53 +31,26 @@ namespace TaskServer.Controllers
         {
             try
             { 
+                //Проверка на присутствие нужных дат в файле
                 if (_MainModel.OnServerCurInfo!=null && _MainModel.OnServerCurInfo.Where(c => c.Date >= DateStart && c.Date <= DateEnd && c.Cur_Abbreviation==Cur).Count() == (DateEnd - DateStart).TotalDays+1)
                     return _MainModel.OnServerCurInfo.Where(c => c.Date >= DateStart.Date && c.Date <= DateEnd.Date && c.Cur_Abbreviation==Cur).ToList();
                 else
                 {
-                    string url, json;
                     List<Currency> model = new List<Currency>();
                     if (Cur == "BTC")
                     {
-                        double start = DateStart.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
-                        double end = DateEnd.AddDays(1).ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
-                        url = $"https://api.coincap.io/v2/assets/bitcoin/history?interval=d1&start={start}&end={end}";
-                        json = Encoding.UTF8.GetString(new WebClient().DownloadData(url));
-                        CollectionOfBitcoin bitcoins = JsonConvert.DeserializeObject<CollectionOfBitcoin>(json);
-                        model =  bitcoins.GetCur();
+                        model = BitcoinDataProvider.GetBitcoinInRange(DateStart, DateEnd);
                     }
                     else
                     {
-                        var CurInfo = _MainModel.GetCurInfo(Cur);
-                        do
-                        {
-                            DateTime start = DateStart;
-                            DateTime end = (DateStart.Year == DateEnd.Year) ? DateEnd : DateStart.AddMonths(6);
-
-                            var ThisYearCurInfo = CurInfo.Where(s => s.Cur_DateStart <= start).OrderBy(s => s.Cur_DateStart).Last();
-                            if (ThisYearCurInfo.Cur_DateEnd < end)
-                            {
-                                end = ThisYearCurInfo.Cur_DateEnd;
-                                DateStart = ThisYearCurInfo.Cur_DateEnd.AddDays(1);
-                            }
-                            else
-                            {
-                                DateStart = DateStart.AddMonths(6);
-                            }
-                            url = $"https://www.nbrb.by/API/ExRates/Rates/Dynamics/{ThisYearCurInfo.Cur_ID}?startDate={start.Year}-{start.Month}-{start.Day}&endDate={end.Year}-{end.Month}-{end.Day}";
-                            json = Encoding.UTF8.GetString(new WebClient().DownloadData(url));
-                            model.AddRange(JsonConvert.DeserializeObject<List<Currency>>(json).ToList());
-                        } while (DateStart.Date < DateEnd.Date);
-                        model.ForEach(x => x.Cur_Abbreviation = Cur);
+                        model = CurrencyDataProvider.GetCurrencyInRange(DateStart, DateEnd, _MainModel.GetCurInfo(Cur));
                     }
-                    _MainModel.OnServerCurInfo = _MainModel.OnServerCurInfo.Union(model).ToHashSet();
-                    string Savejson = JsonConvert.SerializeObject(_MainModel.OnServerCurInfo.OrderBy(c=>c.Date), Formatting.Indented);
-                    System.IO.File.WriteAllText("Collection.json", Savejson);
+                    _MainModel.SaveServerCurrencyInfo(model);
 
                     return model;
                 }
             }
-            catch (Exception q)
+            catch
             {
 
                 return null;
